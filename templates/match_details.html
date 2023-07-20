@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Match Details
+{% endblock %}
+
+{% block content %}
+    {% if not_found %}
+        <h2>Match not found.</h2>
+    {% else %}
+        <h2>{{ match['home_team'] }} vs. {{ match['away_team'] }}</h2>
+        <p><strong>Date:</strong> {{ match['match_date'] }}</p>
+        <p><strong>Competition:</strong> {{ match['competition'] }}</p>
+        <p><strong>Status:</strong> {{ match['status'] }}</p>
+        <p><strong>Referee:</strong> {{ match['referee'] }}</p>
+        <p><strong>Score:</strong> {{ match['home_score'] }} - {{ match['away_score'] }}</p>
+        {% if match['goalscorers'] %}
+            <p><strong>Goalscorers:</strong></p>
+            <ul>
+                {% for goal in match['goalscorers'] %}
+                    <li>{{ goal['name'] }} ({{ goal['minute'] }}')</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock %}

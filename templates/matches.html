@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Matches{% endblock %}
+
+{% block content %}
+    <h1>Real Madrid Matches</h1>
+    <!-- Match filtering form -->
+    <form action="{{ url_for('matches') }}" method="POST">
+        <label for="date">Select a date:</label>
+        <input type="date" id="date" name="date">
+        <input type="submit" name="filter" value="Filter Matches">
+        <input type="submit" name="show_all" value="View All Matches">
+    </form>
+
+    {% if nearest_match %}
+        <!-- Nearest match -->
+        <h2>Nearest Match</h2>
+        <div class="match-container">
+            <div class="match">
+                <!-- Home team -->
+                <div class="team">
+                    <img src="https://crests.football-data.org/{{ nearest_match['home_team_id'] }}.svg"
+                         alt="{{ nearest_match['home_team'] }} badge">
+                    <h3 class="team-name">{{ nearest_match['home_team'] }}</h3>
+                </div>
+                <p>Score: {{ nearest_match['home_score'] }} - {{ nearest_match['away_score'] }}</p>
+                <!-- Away team -->
+                <div class="team">
+                    <img src="https://crests.football-data.org/{{ nearest_match['away_team_id'] }}.svg"
+                         alt="{{ nearest_match['away_team'] }} badge">
+                    <h3 class="team-name">{{ nearest_match['away_team'] }}</h3>
+                </div>
+                <p>Date: {{ nearest_match['match_date'] }}</p>
+                <a href="{{ url_for('match_details', match_id=nearest_match['match_id']) }}">View Details</a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if no_matches %}
+        <p>No matches found for the selected date.</p>
+    {% else %}
+        <!-- List of matches -->
+        <div class="matches">
+            {% for match in matches_list %}
+                <div class="match">
+                    <!-- Home team -->
+                    <div class="team">
+                        <img src="https://crests.football-data.org/{{ match['home_team_id'] }}.svg"
+                             alt="{{ match['home_team'] }} badge">
+                        <h3 class="team-name">{{ match['home_team'] }}</h3>
+                    </div>
+                    <p>Score: {{ match['home_score'] }} - {{ match['away_score'] }}</p>
+                    <!-- Away team -->
+                    <div class="team">
+                        <img src="https://crests.football-data.org/{{ match['away_team_id'] }}.svg"
+                             alt="{{ match['away_team'] }} badge">
+                        <h3 class="team-name">{{ match['away_team'] }}</h3>
+                    </div>
+                    <p>Date: {{ match['match_date'] }}</p>
+                    <a href="{{ url_for('match_details', match_id=match['match_id']) }}">View Details</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

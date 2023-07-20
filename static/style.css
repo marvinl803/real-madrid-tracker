@@ -19,6 +19,7 @@ header {
   background-color: #282c34; /* Use the header background color from the website */
   color: #fff;
   padding: 1rem;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +62,8 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
+
 }
 
 .matches {
@@ -201,6 +203,7 @@ footer {
   background-color: #282c34;
   color: #fff;
   padding: 1rem;
+  margin: 0;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -210,4 +213,89 @@ footer {
 /* Additional style for footer content alignment */
 footer p {
   margin: 0;
+}
+
+/* News styles */
+.news-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align the article boxes to the left */
+}
+
+.article-card {
+  background-color: #fff; /* Use white background color for article cards */
+  color: #282c34; /* Use a dark text color for article cards */
+  padding: 2rem;
+  border-radius: 0.25rem;
+  margin: 1rem;
+  width: 900px; /* Set a fixed width for the article box */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a sleek effect */
+}
+
+.article-content {
+  flex-grow: 1; /* Allow the article content to grow within the card */
+}
+
+.article-content h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.article-content a {
+  color: #282c34;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.article-content a:hover {
+  background-color: #8f999f;
+  color: #282c34; /* Use the header background color as the text color on hover */
+}
+
+/* Additional style for the home container */
+.home-container {
+  position: relative;
+  background-image: url('/static/background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 88.3vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 2rem; /* Add padding to the left and right sides */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.home-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+}
+
+.home-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative; /* Set position relative to appear above the overlay */
+  z-index: 1; /* Ensure the text is above the overlay */
+}
+
+.home-container p {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin-bottom: 2rem;
+  position: relative; /* Set position relative to appear above the overlay */
+  z-index: 1; /* Ensure the text is above the overlay */
 }

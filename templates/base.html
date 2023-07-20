@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('matches') }}">Matches</a></li>
+            <li><a href="{{ url_for('news') }}">News</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>&copy; Marvin</p>
+     <!-- footer content -->
+        <!-- Chatango chatbox -->
+        <div class="chatbox">
+            <div id="chatango-container">
+                <script id="cid0020000350113148674" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 400px;height: 500px;">{"handle":"real-madrid-zone","arch":"js","styles":{"a":"ffffff","b":100,"c":"000000","d":"000000","k":"202020","l":"a0a0a0","m":"C8C8C8","p":"10","q":"C8C8C8","r":100,"usricon":1.07,"pos":"br","cv":1,"cvfnt":"Consolas, monaco, monospace, sans-serif","cvfntsz":"16px","cvfntw":"bolder","cvbg":"ffffff","cvbga":83,"cvfg":"000000","cvw":300,"cvh":50,"surl":0,"cnrs":"0.61","ticker":1,"fwtickm":1}}</script>
+            </div>
+        </div>
+
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
